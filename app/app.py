@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = "localhost"
 app.config["MYSQL_USER"] = "root"
-app.config["MYSQL_PASSWORD"] = "root"
+app.config["MYSQL_PASSWORD"] = "Welcome#1"
 app.config["MYSQL_DB"] = "flask_user_db"
 
 
@@ -17,7 +17,7 @@ print(mysql)
 
 
 
-@app.route('/adduser',methods = ['GET','POST'])
+@app.route('/createuser/adduser',methods = ['GET','POST'])
 def adduser():
     print("Inside add user")
     if request.method == 'POST':
@@ -33,7 +33,7 @@ def adduser():
         mysql.connection.commit()
         #cur.close()
         #return "Success"
-        return redirect('/get_user')
+        return redirect('/getuser/get_user')
     return render_template('user_detail.html')
 @app.route('/get_user',methods = ['GET','POST'])
 def get_user():
@@ -52,11 +52,11 @@ def get_user():
 def healthCheck():
     return "System is up and running Successfully"
 
-@app.route('/test1',methods = ['GET'])
+@app.route('/getuser/test1',methods = ['GET'])
 def test1():
     return "Web Page 1"
 
-@app.route('/test2',methods = ['GET'])
+@app.route('/createuser/test2',methods = ['GET'])
 def test2():
     return "Web Page 2"
 
@@ -75,9 +75,8 @@ import pymysql
 import pymysql.cursors
 connection = pymysql.connect(host='localhost',
                              user='root',
-                             password='root',
-                             port = 3306,
-                             database=None)
+                             password='Welcome#1',
+                             port = 3306)
 
 @app.route('/db')
 def FlaskMysql_DB_Table_Creation():
