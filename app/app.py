@@ -17,7 +17,7 @@ print(mysql)
 
 
 
-@app.route('/createuser/adduser',methods = ['GET','POST'])
+@app.route('/adduser',methods = ['GET','POST'])
 def adduser():
     print("Inside add user")
     if request.method == 'POST':
@@ -33,7 +33,7 @@ def adduser():
         mysql.connection.commit()
         #cur.close()
         #return "Success"
-        return redirect('/getuser/get_user')
+        return redirect('/get_user')
     return render_template('user_detail.html')
 @app.route('/get_user',methods = ['GET','POST'])
 def get_user():
